@@ -12,13 +12,11 @@ import {
 
 
 export default class Main extends React.Component {
+    
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.header}>
-                    <Text style={styles.headertext} >Shopping Lists</Text>
-
-                </View>
+                
 
                 <ScrollView style={styles.ScrollContainer}>
 
