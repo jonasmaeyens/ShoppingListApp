@@ -8,20 +8,29 @@ import {
     ScrollView,
     TouchableOpacity
 } from 'react-native';
+import {StackNavigator} from 'react-navigation';
+
 
 
 
 export default class Main extends React.Component {
-    
+    static navigationOptions = {
+        title: 'Shopping Lists',
+      };
+      
     render() {
+        const { navigate } = this.props.navigation;
+        console.log(this.props);
+        
         return (
             <View style={styles.container}>
-                
-
+            
                 <ScrollView style={styles.ScrollContainer}>
 
                 </ScrollView>
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity 
+                    style={styles.addButton}
+                    onPress={() => navigate('ShoppingList')}>
                     <Text style={styles.addButtonText}>NEW</Text>
                 </TouchableOpacity>
                 
