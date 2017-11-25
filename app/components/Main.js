@@ -12,6 +12,7 @@ import {
     TouchableHighlight,
     ToastAndroid,
     Keyboard,
+    Share,
 } from 'react-native';
 import {
     List, ListItem
@@ -80,7 +81,7 @@ export default class Main extends React.Component {
                             subtitle={item.date}
                             onPress={() => this.props.navigation.navigate('ShoppingListDetails', { title: item.key, date: item.date, items: item.items })}
                             leftIcon={{ name: 'check', style: { color: 'green' } }}
-                            leftIconOnPress={() =>{
+                            leftIconOnPress={() => {
                                 var index = 0;
                                 for (var i = 0; i < this.state.shoppingLists.length; i++) {
                                     if (this.state.shoppingLists[i].key == item.key) {
@@ -89,8 +90,18 @@ export default class Main extends React.Component {
                                 }
                                 this.state.shoppingLists.splice(index, 1);
                                 this.setState({ shoppingLists: this.state.shoppingLists });
-                            }
-                            }
+                            }}
+                            onLongPress={() => {
+                                var msg = '';
+                                for(var i = 0; i < item.items.length; i++){
+                                    msg += '\r'+'-'+item.items[i].name;
+                                }
+                                Share.share({
+                                    message: '----'+item.title +'-----' + msg,
+                                    title: 'lol'
+                                }
+                            )
+                            }}
                         />
                     )}
                 />
@@ -113,7 +124,7 @@ export default class Main extends React.Component {
         if (this.state.itemText) {
             var key = this.state.shoppingLists.length + 1;
             var date = new Date;
-            this.state.shoppingLists.push({ 'key': key, 'title': this.state.itemText ,'items':[],date: date.getDate() +'/'+(date.getMonth()+1)+'/'+date.getFullYear()});
+            this.state.shoppingLists.push({ 'key': key, 'title': this.state.itemText, 'items': [], date: date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() });
             this.setState({ items: this.state.itemArray });
             this.setState({ 'itemText': '' });   //resetten input veld
             Keyboard.dismiss();
