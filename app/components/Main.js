@@ -6,36 +6,119 @@ import {
     View,
     TextInput,
     ScrollView,
-    TouchableOpacity
+    TouchableOpacity,
+    FlatList,
+    Platform,
+    TouchableHighlight,
+    ToastAndroid,
+    Keyboard,
 } from 'react-native';
-import {StackNavigator} from 'react-navigation';
-
+import {
+    List, ListItem
+} from 'react-native-elements';
+import { StackNavigator } from 'react-navigation';
+import ShoppingList from './ShoppingList';
 
 
 
 export default class Main extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            shoppingLists: [
+                {
+                    key: 1,
+                    title: 'colruyt',
+                    date: '20/10/2016',
+                    items: [
+                        {
+                            key: 1,
+                            name: 'milk',
+                        },
+                        {
+                            key: 2,
+                            name: 'butter',
+                        }
+                    ],
+                },
+                {
+                    key: 2,
+                    title: 'verjaarqdsfffdag',
+                    date: '20/10/2019',
+                    items: [
+                        {
+                            key: 1,
+                            name: 'taart',
+                        },
+                        {
+                            key: 2,
+                            name: 'burzeferfrtter',
+                        }
+                    ],
+                }
+            ]
+        };
+    }
+
     static navigationOptions = {
         title: 'Shopping Lists',
-      };
-      
+    };
+
     render() {
+
+        shoppingListArray = this.state.shoppingLists;
         const { navigate } = this.props.navigation;
         console.log(this.props);
-        
+
         return (
             <View style={styles.container}>
-            
-                <ScrollView style={styles.ScrollContainer}>
+                <FlatList
+                    data={shoppingListArray}
+                    renderItem={({ item }) => (
+                        <ListItem
+                            title={item.title}
+                            subtitle={item.date}
+                            onPress={() => this.props.navigation.navigate('ShoppingListDetails', { title: item.key, date: item.date, items: item.items })}
+                            leftIcon={{ name: 'check', style: { color: 'green' } }}
+                            leftIconOnPress={() =>{
+                                var index = 0;
+                                for (var i = 0; i < this.state.shoppingLists.length; i++) {
+                                    if (this.state.shoppingLists[i].key == item.key) {
+                                        index = i;
+                                    }
+                                }
+                                this.state.shoppingLists.splice(index, 1);
+                                this.setState({ shoppingLists: this.state.shoppingLists });
+                            }
+                            }
+                        />
+                    )}
+                />
 
-                </ScrollView>
-                <TouchableOpacity 
-                    style={styles.addButton}
-                    onPress={() => navigate('ShoppingList')}>
-                    <Text style={styles.addButtonText}>NEW</Text>
-                </TouchableOpacity>
-                
+                <View style={styles.footer} >
+                    <TouchableOpacity onPress={this.addItem.bind(this)} style={styles.addButton}>
+                        <Text style={styles.addButtonText}> NEW </Text>
+                    </TouchableOpacity>
+                    <TextInput style={styles.textinput} onChangeText={(itemText) => this.setState({ itemText })}
+                        value={this.state.itemText}
+                        placeholder="> Title">
+                    </TextInput>
+                </View>
+
             </View>
         );
+    }
+
+    addItem() {
+        if (this.state.itemText) {
+            var key = this.state.shoppingLists.length + 1;
+            var date = new Date;
+            this.state.shoppingLists.push({ 'key': key, 'title': this.state.itemText ,'items':[],date: date.getDate() +'/'+(date.getMonth()+1)+'/'+date.getFullYear()});
+            this.setState({ items: this.state.itemArray });
+            this.setState({ 'itemText': '' });   //resetten input veld
+            Keyboard.dismiss();
+        }
     }
 }
 
@@ -72,7 +155,7 @@ const styles = StyleSheet.create({
     addButton: {
         position: 'absolute',
         right: 20,
-        bottom:20,
+        bottom: 20,
         backgroundColor: '#ffbb00',
         width: 90,
         height: 90,
@@ -89,7 +172,6 @@ const styles = StyleSheet.create({
     },
     textinput: {
         alignSelf: 'stretch',
-        color: '#fff',
         padding: 15,
         paddingTop: 56,
 
