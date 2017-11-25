@@ -17,7 +17,6 @@ import {
     List, ListItem
 } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
-import ShoppingList from './ShoppingList';
 
 
 
