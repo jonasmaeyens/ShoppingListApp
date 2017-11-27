@@ -2,5 +2,9 @@
     {
         "merged": "/Users/Jonas/Documents/GIT/ShoppingListApp/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
         "source": "/Users/Jonas/Documents/GIT/ShoppingListApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.3/res/xml/preferences.xml"
+    },
+    {
+        "merged": "/Users/Kobe/Documents/Programmeren/react/ShoppingListApp/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
+        "source": "/Users/Kobe/Documents/Programmeren/react/ShoppingListApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.3/res/xml/preferences.xml"
     }
 ]

@@ -19,6 +19,10 @@ import { Icon } from 'react-native-elements';
 
 class ShoppingListDetails extends Component {
 
+  static navigationOptions = ({ navigation }) => ({
+      title: `${navigation.state.params.title}`,
+      });
+
     constructor(props) {
         super(props);
         this.state = {

@@ -1,14 +1,11 @@
 
 import React, { Component } from 'react';
-import Main from './app/components/Main';
-import {StackNavigator} from 'react-navigation';
-import ShoppingListDetails from './app/components/ShoppingListDetails';
+import Navigation from './router';
 
+class App extends Component{
+  render(){
+    return <Navigation/>;
+  }
+}
 
-const Navigation =  StackNavigator({
-  Main: { screen: Main },
-  ShoppingListDetails: {screen: ShoppingListDetails},
-});
-
-export default Navigation;
-
+export default App;

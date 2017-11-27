@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/Kobe/Documents/Programmeren/react/ShoppingListApp/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/Users/Kobe/Documents/Programmeren/react/ShoppingListApp/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
         "merged": "/Users/Jonas/Documents/GIT/ShoppingListApp/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
         "source": "/Users/Jonas/Documents/GIT/ShoppingListApp/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     }

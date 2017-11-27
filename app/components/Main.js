@@ -19,8 +19,6 @@ import {
 } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 
-
-
 export default class Main extends React.Component {
 
     constructor(props) {
@@ -61,10 +59,6 @@ export default class Main extends React.Component {
         };
     }
 
-    static navigationOptions = {
-        title: 'Shopping Lists',
-    };
-
     render() {
 
         shoppingListArray = this.state.shoppingLists;
@@ -79,7 +73,7 @@ export default class Main extends React.Component {
                         <ListItem
                             title={item.title}
                             subtitle={item.date}
-                            onPress={() => this.props.navigation.navigate('ShoppingListDetails', { title: item.key, date: item.date, items: item.items })}
+                            onPress={() => this.props.navigation.navigate('ShoppingListDetails', { title: item.title, date: item.date, items: item.items })}
                             leftIcon={{ name: 'check', style: { color: 'green' } }}
                             leftIconOnPress={() => {
                                 var index = 0;
