@@ -37,14 +37,12 @@ export default class Coupons extends Component {
       }
 
       render() {
-        if(typeof this.props.couponList !== "undefined" && this.props.navigation.state.params>this.state.coupons.length){
-            console.log("Grotere list");
-            this.state.coupons = this.props.navigation.state.params;
-        }
+        // if(typeof this.props.couponList !== "undefined" && this.props.navigation.state.params>this.state.coupons.length){
+        //     console.log("Grotere list");
+        //     this.state.coupons = this.props.navigation.state.params;
+        // }
         const {navigate} = this.props.navigation;
           return (
-
-
               <View style={styles.container}>
                   <FlatList
                       data={this.state.coupons}

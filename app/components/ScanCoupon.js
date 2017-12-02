@@ -22,10 +22,10 @@ export default class ScanCoupon extends Component {
     console.log(this);
     console.log(e);
     alert(e.data);
-    var key = this.state.couponList.length+ 1;
-    const {goBack} = this.props.navigation;
-    this.state.couponList.push({ 'key': key, 'data': e.data});
-    console.log(this);
+    // var key = this.state.couponList.length+ 1;
+    // const {goBack} = this.props.navigation;
+    // this.state.couponList.push({ 'key': key, 'data': e.data});
+    // console.log(this);
     // this.props.navigation.setParams(this.state.couponList);
     //navigate('Coupons',{couponList: this.state.couponList});
     // goBack();
@@ -38,7 +38,7 @@ export default class ScanCoupon extends Component {
     // this.setState(prevState => ({
     //   couponList: [...prevState.couponList, this.props.navigation.state.params]
     // }));
-    this.state.couponList = this.props.navigation.state.params.couponList;
+    // this.state.couponList = this.props.navigation.state.params.couponList;
     console.log(this);
     return (
       <View style={styles.container}>
@@ -47,8 +47,8 @@ export default class ScanCoupon extends Component {
             this.camera = cam
           }}
           style={styles.view}
-          onBarCodeRead={this.onBarCodeRead}
-          aspect={Camera.constants.Aspect.fill}>
+          barcodeScannerEnabled='true'
+          onBarCodeRead={this.onBarCodeRead}>
         </Camera>
 
         <View style={styles.footer} >
